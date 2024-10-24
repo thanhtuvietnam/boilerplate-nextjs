@@ -3,7 +3,9 @@ import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import importHelpers from 'eslint-plugin-import-helpers';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
+import tailwind from 'eslint-plugin-tailwindcss';
 import testingLibrary from 'eslint-plugin-testing-library';
 import globals from 'globals';
 import path from 'node:path';
@@ -17,7 +19,7 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-export default [
+const eslintConfig = [
   {
     ignores: [
       '**/node_modules/*',
@@ -42,6 +44,8 @@ export default [
       '@typescript-eslint': typescriptEslint,
       'import-helpers': importHelpers,
       'testing-library': testingLibrary,
+      'jsx-a11y': jsxA11y,
+      tailwindcss: tailwind,
     },
 
     languageOptions: {
@@ -112,3 +116,5 @@ export default [
     files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
   })),
 ];
+
+export default eslintConfig;
